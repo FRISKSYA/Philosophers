@@ -7,6 +7,7 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(HEADERS_DIRECTORY)
+PTHREAD = -pthread
 
 # Directories
 SRCS_DIR = ./src
@@ -23,7 +24,7 @@ OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(PTHREAD) $(OBJS) -o $(NAME)
 	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created successfully$(RESET)"
 
