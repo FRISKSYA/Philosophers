@@ -33,7 +33,7 @@ $(OBJS_DIR):
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
+	@echo "$(GREEN)$(RESET)\c"
 
 clean:
 	@rm -rf $(OBJS_DIR)
