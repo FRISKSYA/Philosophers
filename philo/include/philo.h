@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 18:16:24 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 19:08:56 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ typedef struct s_fork
 	int					fork_id;
 }						t_fork;
 
+typedef struct s_philo
+{
+	int					id;
+	long int			meals_counter;
+	bool				full;
+	long int			last_meal_time;
+	t_fork				*l_fork;
+	t_fork				*r_fork;
+	pthread_t			thread_id;
+}						t_philo;
+
 typedef struct s_table
 {
 	size_t				philo_nbr;
@@ -49,18 +60,6 @@ typedef struct s_table
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
-
-typedef struct s_philo
-{
-	int					id;
-	long int			meals_counter;
-	bool				full;
-	long int			last_meal_time;
-	t_fork				*l_fork;
-	t_fork				*r_fork;
-	pthread_t			thread_id;
-	t_table				*table;
-}						t_philo;
 
 // main funcs
 bool					validate_input(int argc, char **argv);
