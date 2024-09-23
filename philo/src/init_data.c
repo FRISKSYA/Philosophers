@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 18:22:46 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 19:07:12 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,23 @@
 // TODO: fill values
 static int	init_fork(t_table *table)
 {
+	size_t	i;
+
 	table->forks = (t_fork *)malloc(table->philo_nbr * sizeof(t_fork));
 	if (table->forks == NULL)
 		return (EXIT_FAILURE);
+	i = 0;
+	while (i < table->philo_nbr)
+	{
+		table->forks[i].fork_id = i;
+		if (pthread_mutex_init(&table->forks[i].fork, NULL) < 0)
+		{
+			while (i > 0)
+				pthread_mutex_destroy(&table->forks[i--].fork);
+			return (EXIT_FAILURE);
+		}
+		i++;
+	}
 	return (EXIT_SUCCESS);
 }
 
