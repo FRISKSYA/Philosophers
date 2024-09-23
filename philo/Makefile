@@ -19,7 +19,8 @@ SRCS = main.c\
 		error.c\
 		validate_input.c\
 		ft_atoi.c\
-		ft_isdigit.c
+		ft_isdigit.c\
+		init_data.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
