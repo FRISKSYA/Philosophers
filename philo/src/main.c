@@ -58,7 +58,10 @@ int	main(int argc, char **argv)
 	{
 		i = pthread_create(&(t_array[index]), NULL, sum_thread, test);
 		if (i != 0)
+		{
+			perror("pthread_create: ");
 			exit(EXIT_FAILURE);
+		}
 		index++;
 	}
 	index = 0;
