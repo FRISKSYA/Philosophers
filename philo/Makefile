@@ -15,7 +15,9 @@ HEADERS_DIRECTORY = ./include
 OBJS_DIR = ./obj
 
 # Source files (list .c files without path)
-SRCS = main.c
+SRCS = main.c\
+		error.c\
+		validate_input.c
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 # Rules
