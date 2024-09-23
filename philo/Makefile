@@ -17,7 +17,10 @@ OBJS_DIR = ./obj
 # Source files (list .c files without path)
 SRCS = main.c\
 		error.c\
-		validate_input.c
+		validate_input.c\
+		ft_atol.c\
+		ft_isdigit.c
+
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
 # Rules
