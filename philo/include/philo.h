@@ -10,8 +10,9 @@
 
 typedef struct s_test
 {
-	int		sum;
-	char	*str;
+	int				sum;
+	char			*str;
+	pthread_mutex_t	mutex;
 }				t_test;
 
 #endif
