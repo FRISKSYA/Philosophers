@@ -6,11 +6,11 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:28:45 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 16:47:47 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:22:28 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 int	ft_isdigit(int i)
 {

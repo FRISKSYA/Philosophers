@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:28:35 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 16:47:50 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:28:21 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ static int	ft_isspace(char c)
 	);
 }
 
+static void	set_is_mi(char c, size_t *is_mi)
+{
+	if (c == '-')
+		*is_mi = 1;
+	else
+		*is_mi = 0;
+}
+
 int	ft_atoi(const char *str)
 {
 	size_t	index;
@@ -33,8 +41,7 @@ int	ft_atoi(const char *str)
 	index = 0;
 	while (ft_isspace(str[index]))
 		index++;
-	if (str[index] == '-')
-		is_mi = 1;
+	set_is_mi(str[index], &is_mi);
 	if (str[index] == '-' || str[index] == '+')
 		index++;
 	result = 0;

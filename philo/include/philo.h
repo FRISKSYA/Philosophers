@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 16:53:51 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:08:27 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # include <string.h>
 
 // validate args
-#define MAX_PHILOSOPHERS 10000
-#define MAX_TIME_IN_MS 1800000
-#define MAX_MEALS 5000
+# define MAX_PHILOSOPHERS 10000
+# define MAX_TIME_IN_MS 1800000
+# define MAX_MEALS 5000
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;
