@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 19:07:12 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 19:25:15 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,22 @@ static int	init_fork(t_table *table)
 
 static int	init_philo(t_table *table)
 {
+	size_t	i;
+
 	table->philos = (t_philo *)malloc(table->philo_nbr * sizeof(t_philo));
 	if (table->philos == NULL)
 		return (EXIT_FAILURE);
+	i = 0;
+	while (i < table->philo_nbr)
+	{
+		table->philos[i].id = i;
+		table->philos[i].meals_counter = 0;
+		table->philos[i].full = false;
+		table->philos[i].last_meal_time = 0;
+		table->philos[i].r_fork = &table->forks[i];
+		table->philos[i].l_fork = &table->forks[(i + 1) % table->philo_nbr];
+		i++;
+	}
 	return (EXIT_SUCCESS);
 }
 
