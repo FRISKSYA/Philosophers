@@ -18,7 +18,7 @@ OBJS_DIR = ./obj
 SRCS = main.c\
 		error.c\
 		validate_input.c\
-		ft_atol.c\
+		ft_atoi.c\
 		ft_isdigit.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
