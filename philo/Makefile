@@ -21,7 +21,8 @@ SRCS = main.c\
 		ft_atoi.c\
 		ft_isdigit.c\
 		init_data.c\
-		cleanup.c
+		cleanup.c\
+		eat_dinner.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

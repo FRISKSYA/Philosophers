@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 19:21:37 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 19:30:13 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_table
 // main funcs
 bool					validate_input(int argc, char **argv);
 int						init_data(t_table **table, char **argv);
+void					eat_dinner(t_table *table);
 void					cleanup(t_table *table);
 // utils
 bool					print_err(const char *msg);
