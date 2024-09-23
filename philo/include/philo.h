@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 16:29:58 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:45:34 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+// dev
+# include <string.h>
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;
@@ -62,9 +64,6 @@ bool					validate_input(int argc, char **argv);
 bool					print_err(const char *msg);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
-
-// dev
-# include <string.h>
 
 typedef struct s_test
 {

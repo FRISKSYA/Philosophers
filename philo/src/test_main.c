@@ -6,13 +6,13 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:49 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 14:53:19 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:45:46 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void *sum_thread(void *arg)
+static void	*sum_thread(void *arg)
 {
 	t_test	*box;
 
@@ -24,7 +24,7 @@ static void *sum_thread(void *arg)
 	return (NULL);
 }
 
-static void init_args(int argc, char ** argv, t_test **test, int *th_size)
+static void	init_args(int argc, char **argv, t_test **test, int *th_size)
 {
 	if (argc == 1)
 		*th_size = 3;
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 	int			i;
 	int			th_size;
 
-	init_args(argc, argv, &test, &th_size);	
+	init_args(argc, argv, &test, &th_size);
 	t_array = (pthread_t *)malloc(th_size * sizeof(pthread_t));
 	i = 0;
 	index = 0;
