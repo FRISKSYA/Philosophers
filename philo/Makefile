@@ -20,7 +20,8 @@ SRCS = main.c\
 		validate_input.c\
 		ft_atoi.c\
 		ft_isdigit.c\
-		init_data.c
+		init_data.c\
+		cleanup.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

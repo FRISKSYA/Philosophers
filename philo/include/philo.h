@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 18:01:51 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:16:24 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_philo
 // main funcs
 bool					validate_input(int argc, char **argv);
 int						init_data(t_table **table, char **argv);
+void					cleanup(t_table *table);
 // utils
 bool					print_err(const char *msg);
 int						ft_isdigit(int i);

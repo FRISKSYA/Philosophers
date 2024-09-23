@@ -6,25 +6,27 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 18:05:40 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:17:41 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO: dev
+// TODO: fill values
 static int  init_fork(t_table *table)
 {
-    if (table)
-        return (EXIT_SUCCESS);
-    return (EXIT_FAILURE);
+    table->forks = (t_fork *)malloc(table->philo_nbr * sizeof(t_fork));
+    if (table->forks == NULL)
+        return (EXIT_FAILURE);
+    return (EXIT_SUCCESS);
 }
 
 static int  init_philo(t_table *table)
 {
-    if (table)
-        return (EXIT_SUCCESS);
-    return (EXIT_FAILURE);
+    table->philos = (t_philo *)malloc(table->philo_nbr * sizeof(t_philo));
+    if (table->philos == NULL)
+        return (EXIT_FAILURE);
+    return (EXIT_SUCCESS);
 }
 
 int	init_data(t_table **table, char **argv)

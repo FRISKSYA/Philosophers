@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 14:53:23 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 18:16:08 by kfukuhar         ###   ########.fr       */
+/*   Created: 2024/09/23 18:15:48 by kfukuhar          #+#    #+#             */
+/*   Updated: 2024/09/23 18:18:18 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO: dev
-static void	eat_dinner(t_table *table)
+void	cleanup(t_table *table)
 {
+	if (table && table->forks)
+		free(table->forks);
+	if (table && table->philos)
+		free(table->philos);
 	if (table)
-		return ;
+		free(table);
 	return ;
-}
-
-int	main(int argc, char **argv)
-{
-	t_table	*table;
-
-	if (!validate_input(argc, argv))
-		return (EXIT_FAILURE);
-	if (init_data(&table, argv) == EXIT_FAILURE)
-	{
-		cleanup(table);
-		print_err("malloc");
-		return (EXIT_FAILURE);
-	}
-	eat_dinner(table);
-	cleanup(table);
-	return (EXIT_SUCCESS);
 }
