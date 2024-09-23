@@ -1,6 +1,5 @@
 # Prerequisites
 *.d
-philo
 
 # Object files
 *.o
