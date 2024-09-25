@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 19:25:15 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:16:01 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	init_philo(t_table *table)
 	i = 0;
 	while (i < table->philo_nbr)
 	{
-		table->philos[i].id = i;
+		table->philos[i].id = i + 1;
 		table->philos[i].meals_counter = 0;
 		table->philos[i].full = false;
 		table->philos[i].last_meal_time = 0;

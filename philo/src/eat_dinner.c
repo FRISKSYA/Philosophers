@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/25 13:59:21 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:09:52 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static void	*test_thread(void *arg)
 	while (i < table->philo_nbr)
 	{
 		pthread_mutex_lock(&table->forks[i].fork);
-		printf("forks[%d].fork_id : [%d]\n", (int)i, table->forks[i].fork_id);
+		if (table->philos[i].id % 2 == 1)
+			table->philos[i].r_fork->fork_id += 1;
+		else
+			table->philos[i].r_fork->fork_id *= 1;
 		pthread_mutex_unlock(&table->forks[i].fork);
 		i++;
 	}
