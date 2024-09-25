@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/25 16:09:52 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:25:21 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	eat_dinner(t_table *table)
 	{
 		i = pthread_join(table->philos[index].thread_id, NULL);
 		if (i != 0)
+		{
+			print_err("pthread_join");
 			exit(EXIT_FAILURE);
+		}
 		index++;
 	}
 	index = 0;
