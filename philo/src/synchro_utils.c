@@ -6,11 +6,17 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:31:56 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:37:01 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void	wait_all_threads(t_table *table)
+{
+	while (!get_bool(&table->table_mutex, &table->ready_all_threads))
+		;
+}
 
 static void	eat(t_philo *philo)
 {
@@ -30,10 +36,10 @@ static void	eat(t_philo *philo)
 	return ;
 }
 
-static void	wait_all_threads(t_table *table)
+// TODO
+static void	thinking(t_philo *philo)
 {
-	while (!get_bool(&table->table_mutex, &table->ready_all_threads))
-		;
+	write_status(THINKING, philo, DEBUG_MODE);
 }
 
 void	*simulate_dinner(void *data)
@@ -49,7 +55,7 @@ void	*simulate_dinner(void *data)
 		eat(philo); // TODO
 		write_status(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
-		// thinking(philo); // TODO
+		thinking(philo); // TODO
 	}
 	return (NULL);
 }
