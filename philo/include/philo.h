@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:24:03 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 23:45:21 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef enum s_philo_status
 	DIED,
 }						t_philo_status;
 
-# define DEBUG_MODE 0
+# define DEBUG_MODE 1
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;

@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:38:21 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:44:51 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:01:13 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	write_status_debug(t_philo_status status, t_philo *philo,
 			philo->first_fork->fork_id);
 	else if (status == TAKE_SECOND_FORK && !finished_simulation(philo->table))
 		printf("%6ld %zu has taken the 2* fork [ %d ]\n", elapsed, philo->id,
-			philo->first_fork->fork_id);
+			philo->second_fork->fork_id);
 	else if (status == EATING && !finished_simulation(philo->table))
 		printf("%6ld %zu is eating [ %ld ]\n", elapsed, philo->id,
 			philo->meals_counter);
@@ -36,12 +36,15 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 {
 	long int	elapsed;
 
-	elapsed = gettime(MILLISECOND);
+	elapsed = gettime(MILLISECOND) - philo->table->start_simulation;
 	if (philo->full)
 		return ;
 	pthread_mutex_lock(&philo->table->write_mutex);
 	if (debug)
+	{
 		write_status_debug(status, philo, elapsed);
+		pthread_mutex_unlock(&philo->table->write_mutex);
+	}
 	else
 	{
 		if ((status == TAKE_FIRST_FORK || status == TAKE_SECOND_FORK)
