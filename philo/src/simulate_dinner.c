@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   synchro_utils.c                                    :+:      :+:    :+:   */
+/*   simulate_dinner.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 19:55:20 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:46:46 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	wait_all_threads(t_table *table)
+void	wait_all_threads(t_table *table)
 {
 	while (!get_bool(&table->table_mutex, &table->ready_all_threads))
 		;
@@ -48,6 +48,9 @@ void	*simulate_dinner(void *data)
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
+	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILLISECOND));
+	incread_long(&philo->table->table_mutex,
+		&philo->table->threads_runnning_nbr);
 	while (!finished_simulation(philo->table))
 	{
 		if (philo->full)

@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 23:59:50 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:19:01 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	init_data(t_table **table, char **argv)
 	(*table)->start_simulation = -1;
 	(*table)->end_simulation = false;
 	(*table)->ready_all_threads = false;
+	(*table)->threads_runnning_nbr = 0;
 	pthread_mutex_init(&(*table)->table_mutex, NULL);
 	pthread_mutex_init(&(*table)->write_mutex, NULL);
 	if (init_fork(*table) == EXIT_FAILURE)

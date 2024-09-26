@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 23:45:21 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 00:53:47 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef enum s_philo_status
 	DIED,
 }						t_philo_status;
 
-# define DEBUG_MODE 1
+# define DEBUG_MODE 0
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;
@@ -80,8 +80,10 @@ typedef struct s_table
 	long int			start_simulation;
 	bool				end_simulation;
 	bool				ready_all_threads;
+	long int			threads_runnning_nbr;
 	pthread_mutex_t		table_mutex;
 	pthread_mutex_t		write_mutex;
+	pthread_t			monitor;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
@@ -111,5 +113,8 @@ long int				get_long(pthread_mutex_t *mutex, long int *value);
 bool					finished_simulation(t_table *table);
 void					write_status(t_philo_status status, t_philo *philo,
 							bool debug);
+void					*monitor_dinner(void *data);
+void					incread_long(pthread_mutex_t *mutex, long int *value);
+void					wait_all_threads(t_table *table);
 
 #endif
