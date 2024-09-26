@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 18:15:48 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:26:17 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:41:01 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	cleanup(t_table *table)
 	}
 	pthread_mutex_destroy(&table->table_mutex);
 	pthread_mutex_destroy(&table->write_mutex);
-	
 	if (table && table->philos)
 		free(table->philos);
 	if (table)

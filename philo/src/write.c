@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:38:21 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:07:48 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:44:51 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	write_status_debug(t_philo_status status, t_philo *philo,
 		printf("%6ld %zu is sleeping\n", elapsed, philo->id);
 	else if (status == THINKING && !finished_simulation(philo->table))
 		printf("%6ld %zu is thinking\n", elapsed, philo->id);
-    else if (status == DIED)
-        printf("%6ld %zu died\n", elapsed, philo->id);
+	else if (status == DIED)
+		printf("%6ld %zu died\n", elapsed, philo->id);
 }
 
 void	write_status(t_philo_status status, t_philo *philo, bool debug)
 {
-	long int elapsed;
+	long int	elapsed;
 
 	elapsed = gettime(MILLISECOND);
 	if (philo->full)

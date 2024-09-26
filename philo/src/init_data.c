@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:40:09 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:41:13 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 		philo->first_fork = &forks[philo_pos];
 		philo->second_fork = &forks[(philo_pos + 1) % philo_nbr];
 	}
-	// デバッグ出力
 	printf("Philosopher %zu: first_fork: %d, second_fork: %d\n", philo->id,
 		philo->first_fork->fork_id, philo->second_fork->fork_id);
 }

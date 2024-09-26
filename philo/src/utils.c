@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:39:59 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:32:30 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:43:06 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ bool	print_err(const char *msg)
 // NOTE: Spin Lock system
 void	precise_usleep(long int usec, t_table *table)
 {
-	long int start;
-	long int elapsed;
-	long int rem;
+	long int	start;
+	long int	elapsed;
+	long int	rem;
 
 	start = gettime(MICROSECOND);
 	while (gettime(MICROSECOND) - start < usec)

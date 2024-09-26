@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:11:16 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:10:02 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:41:39 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 long int	gettime(t_time_code time_code)
 {
-	struct timeval te;
+	struct timeval	te;
 
 	if (gettimeofday(&te, NULL))
 	{
 		print_err("gettimeofday");
-		return (-1);		
+		return (-1);
 	}
 	if (SECOND == time_code)
 		return (te.tv_sec + (te.tv_usec / 1e6));
@@ -31,5 +31,5 @@ long int	gettime(t_time_code time_code)
 	{
 		print_err("Wrong time_code");
 		return (-1);
-	}	
+	}
 }
