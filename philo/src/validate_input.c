@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:23 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 15:37:28 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:53:58 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static bool	validate_all_ranges(int argc, char **argv)
 	if (argc == 6)
 	{
 		value = atoi(argv[5]);
-		if (!validate_range(value, 60, MAX_MEALS, "Invalid number of meals"))
+		if (!validate_range(value, 1, MAX_MEALS, "Invalid number of meals"))
 			return (false);
 	}
 	return (true);

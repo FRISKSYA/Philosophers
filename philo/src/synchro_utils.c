@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 19:07:39 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:55:20 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,10 @@ void	*simulate_dinner(void *data)
 	{
 		if (philo->full)
 			break ;
-		printf("---check segv [ 1 ]---\n");
-		eat(philo); // TODO
+		eat(philo);
 		write_status(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
-		thinking(philo); // TODO
-		printf("---check segv [ 2 ]---\n");
+		thinking(philo);
 	}
 	return (NULL);
 }

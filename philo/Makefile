@@ -5,7 +5,7 @@ RESET = \033[0m
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 ADDRESSCHECK = -fsanitize=address
 INCLUDES = -I$(HEADERS_DIRECTORY)
 PTHREAD = -pthread
