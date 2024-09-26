@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:34:23 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 10:07:03 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:46:06 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ static bool	validate_all_ranges(int argc, char **argv)
 	int	i;
 
 	value = atoi(argv[1]);
-	if (!validate_range(value, 1, MAX_PHILOSOPHERS,
+	if (!validate_range(value, 60, MAX_PHILOSOPHERS,
 			"Invalid number of philosophers"))
 		return (false);
 	i = 2;
 	while (i <= 4)
 	{
 		value = atoi(argv[i]);
-		if (!validate_range(value, 1, MAX_TIME_IN_MS, "Invalid time setting"))
+		if (!validate_range(value, 60, MAX_TIME_IN_MS, "Invalid time setting"))
 			return (false);
 		i++;
 	}
 	if (argc == 6)
 	{
 		value = atoi(argv[5]);
-		if (!validate_range(value, 1, MAX_MEALS, "Invalid number of meals"))
+		if (!validate_range(value, 60, MAX_MEALS, "Invalid number of meals"))
 			return (false);
 	}
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 12:21:21 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:23:04 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_philo
 	size_t				meals_counter;
 	bool				full;
 	long long int		last_meal_time;
-	t_fork				*l_fork;
-	t_fork				*r_fork;
+	t_fork				*first_fork;
+	t_fork				*second_fork;
 	pthread_t			thread_id;
 	t_table				*table;
 }						t_philo;

@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 12:26:05 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:28:00 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ static int	init_fork(t_table *table)
 	return (EXIT_SUCCESS);
 }
 
+static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
+{
+	int	philo_nbr;
+
+	philo_nbr = philo->table->philo_nbr;
+	philo->first_fork = &forks[(philo_pos + 1) % philo_nbr];
+	philo->second_fork = &forks[philo_pos];
+	if (philo->id % 2)
+	{
+		philo->first_fork = &forks[philo_pos];
+		philo->second_fork = &forks[(philo_pos + 1) % philo_nbr];
+	}
+
+}
+
 static int	init_philo(t_table *table)
 {
 	size_t	i;
@@ -48,8 +63,8 @@ static int	init_philo(t_table *table)
 		table->philos[i].meals_counter = 0;
 		table->philos[i].full = false;
 		table->philos[i].last_meal_time = 0;
-		table->philos[i].r_fork = &table->forks[i];
-		table->philos[i].l_fork = &table->forks[(i + 1) % table->philo_nbr];
+		assign_forks(table->philos, table->forks, i);
+		table->philos[i].table = table;
 		i++;
 	}
 	return (EXIT_SUCCESS);

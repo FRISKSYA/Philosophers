@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 12:34:57 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:39:32 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	*test_thread(void *arg)
 	{
 		pthread_mutex_lock(&table->forks[i].fork);
 		if (table->philos[i].id % 2 == 1)
-			table->philos[i].r_fork->fork_id += 1;
+			table->philos[i].first_fork->fork_id += 1;
 		else
-			table->philos[i].r_fork->fork_id *= 1;
-		if (table->philos[i].r_fork->fork_id >= 100)
+			table->philos[i].first_fork->fork_id *= 1;
+		if (table->philos[i].first_fork->fork_id >= 100)
 		{
 			printf("%lld now philos[%d].r_fork is greater than 100.\n", current_timestamp(), (int)i);
 			pthread_mutex_unlock(&table->forks[i].fork);
