@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:10:59 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:17:23 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	eat_dinner(t_table *table)
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (1 == table->philo_nbr)
-		todo();//TODO:
+		return ; //TODO:
 	i = 0;
 	index = 0;
 	while (index < (int)table->philo_nbr)
