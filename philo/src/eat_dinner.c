@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 16:32:45 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:59 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,16 @@ static void	*test_thread(void *arg)
 	return (NULL);
 }
 
-// static void	*simulate_dinner(void *data)
-// {
-// 	t_philo	*philo;
-
-// 	philo = (t_philo *)data;
-// 	wait_all_threads(philo->table); // TODO
-// 	return (NULL);	
-// }
-
-// static void	*eat_thread(void *arg)
-// {
-// 	t_table	*table;
-// 	size_t	i;
-
-// 	i = 0;
-// 	table = (t_table *)arg;
-// 	while (i < table->philo_nbr)
-// 	{
-// 		pthread_mutex_lock(&table->forks[i].fork);
-// 		if (table->philos[i].id % 2 == 1)
-// 			table->philos[i].r_fork->fork_id += 1;
-// 		else
-// 			table->philos[i].r_fork->fork_id *= 1;
-// 		pthread_mutex_unlock(&table->forks[i].fork);
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-
 // TODO: dev
 void	eat_dinner(t_table *table)
 {
 	int		i;
 	int		index;
 
+	if (table->nbr_limit_meals == 0)
+		return ;
+	else if (1 == table->philo_nbr)
+		todo();//TODO:
 	i = 0;
 	index = 0;
 	while (index < (int)table->philo_nbr)
@@ -87,6 +62,8 @@ void	eat_dinner(t_table *table)
 		}
 		index++;
 	}
+	table->start_simulation = gettime(MILLISECOND);
+	set_bool(&table->table_mutex, &table->ready_all_threads, true);
 	index = 0;
 	while (index < (int)table->philo_nbr)
 	{

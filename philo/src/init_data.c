@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 16:31:12 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:11:19 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	init_data(t_table **table, char **argv)
 		(*table)->nbr_limit_meals = ft_atoi(argv[i]);
 	else
 		(*table)->nbr_limit_meals = -1;
-	(*table)->start_simulation = current_timestamp();
+	(*table)->start_simulation = -1;
 	(*table)->end_simulation = false;
 	(*table)->ready_all_threads = false;
 	pthread_mutex_init(&(*table)->table_mutex, NULL);

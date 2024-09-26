@@ -17,7 +17,7 @@ OBJS_DIR = ./obj
 
 # Source files (list .c files without path)
 SRCS = main.c\
-		error.c\
+		utils.c\
 		validate_input.c\
 		ft_atoi.c\
 		ft_isdigit.c\
@@ -25,7 +25,8 @@ SRCS = main.c\
 		cleanup.c\
 		eat_dinner.c\
 		time.c\
-		getter_setter.c
+		getter_setter.c\
+		synchro_utils.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

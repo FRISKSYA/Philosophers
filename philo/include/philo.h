@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 14:29:53 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:14 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # define MAX_PHILOSOPHERS 10000
 # define MAX_TIME_IN_MS 1800000
 # define MAX_MEALS 5000
+
+// for gettime
+typedef enum s_time_code
+{
+	SECOND,
+	MILLISECOND,
+	MICROSECOND,
+}						t_time_code;
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;
@@ -68,12 +76,16 @@ bool					validate_input(int argc, char **argv);
 int						init_data(t_table **table, char **argv);
 void					eat_dinner(t_table *table);
 void					cleanup(t_table *table);
+
+// pthread
+void					*simulate_dinner(void *data);
+
 // utils
 bool					print_err(const char *msg);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
 bool					is_digit_array(char *str);
-long int				current_timestamp(void);
+long int				gettime(t_time_code time_code);
 void					set_bool(pthread_mutex_t *mutex, bool *dest,
 							bool value);
 bool					get_bool(pthread_mutex_t *mutex, bool *value);
