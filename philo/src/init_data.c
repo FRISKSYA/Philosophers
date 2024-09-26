@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:40:00 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:24:59 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static int	init_philo(t_table *table)
 		table->philos[i].full = false;
 		table->philos[i].last_meal_time = 0;
 		table->philos[i].table = table;
+		pthread_mutex_init(&table->philos[i].philo_mutex, NULL);
 		assign_forks(table->philos, table->forks, i);
 		i++;
 	}

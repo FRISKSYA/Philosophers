@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:04:59 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:24:03 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_philo
 	t_fork				*first_fork;
 	t_fork				*second_fork;
 	pthread_t			thread_id;
+	pthread_mutex_t		philo_mutex;
 	t_table				*table;
 }						t_philo;
 
