@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:10:14 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:32:19 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void					*simulate_dinner(void *data);
 
 // utils
 bool					print_err(const char *msg);
+void					precise_usleep(long int usec, t_table *table);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
 bool					is_digit_array(char *str);
@@ -92,5 +93,6 @@ bool					get_bool(pthread_mutex_t *mutex, bool *value);
 void					set_long(pthread_mutex_t *mutex, long int *dest,
 							long int value);
 long int				get_long(pthread_mutex_t *mutex, long int *value);
+bool					finished_simulation(t_table *table);
 
 #endif

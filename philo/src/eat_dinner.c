@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:17:23 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:30:18 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ static void	*test_thread(void *arg)
 		printf("check segv --- 1 ---\n");
 		pthread_mutex_lock(&table->forks[i].fork);
 		printf("check segv --- lock ---\n");
-		// if (table->philos[i].id % 2 == 1)
-		// 	table->philos[i].first_fork->fork_id += 1;
-		// else
-		// 	table->philos[i].first_fork->fork_id *= 1;
-		// if (table->philos[i].first_fork->fork_id >= 100)
-		// {
-		// 	printf("%ld now philos[%d].r_fork is greater than 100.\n", current_timestamp(), (int)i);
-		// 	pthread_mutex_unlock(&table->forks[i].fork);
-		// 	break ;
-		// }
 		pthread_mutex_unlock(&table->forks[i].fork);
 		i++;
 	}
@@ -43,18 +33,19 @@ static void	*test_thread(void *arg)
 // TODO: dev
 void	eat_dinner(t_table *table)
 {
-	int		i;
-	int		index;
+	int	i;
+	int	index;
 
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (1 == table->philo_nbr)
-		return ; //TODO:
+		return ; // TODO:
 	i = 0;
 	index = 0;
 	while (index < (int)table->philo_nbr)
 	{
-		i = pthread_create(&table->philos[index].thread_id, NULL, test_thread, table);
+		i = pthread_create(&table->philos[index].thread_id, NULL, test_thread,
+				table);
 		if (i != 0)
 		{
 			print_err("pthread_create");
@@ -78,7 +69,8 @@ void	eat_dinner(t_table *table)
 	index = 0;
 	while (index < (int)table->philo_nbr)
 	{
-		printf("Threads done. forks[%d].fork_id : [%d]\n", index, table->forks[index].fork_id);
+		printf("Threads done. forks[%d].fork_id : [%d]\n", index,
+			table->forks[index].fork_id);
 		index++;
 	}
 	return ;

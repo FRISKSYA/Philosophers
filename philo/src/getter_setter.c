@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:14:47 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 15:31:17 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:29:57 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ long int	get_long(pthread_mutex_t *mutex, long int *value)
 	return (ret);
 }
 
-bool    finished_simulation(t_table *table)
+bool	finished_simulation(t_table *table)
 {
-    return (get_bool(&table->table_mutex, &table->end_simulation));
+	return (get_bool(&table->table_mutex, &table->end_simulation));
 }
