@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 09:58:00 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:46:11 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ typedef struct s_philo
 typedef struct s_table
 {
 	size_t				philo_nbr;
-	size_t				time_to_die;
-	size_t				time_to_eat;
-	size_t				time_to_sleep;
+	long long int		time_to_die;
+	long long int		time_to_eat;
+	long long int		time_to_sleep;
 	size_t				nbr_limit_meals;
-	size_t				start_simulation;
+	long long int		start_simulation;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
