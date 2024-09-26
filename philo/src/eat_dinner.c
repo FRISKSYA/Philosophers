@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 13:39:32 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:32:45 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,33 @@ static void	*test_thread(void *arg)
 	table = (t_table *)arg;
 	while (i < table->philo_nbr)
 	{
+		printf("check segv --- 1 ---\n");
 		pthread_mutex_lock(&table->forks[i].fork);
-		if (table->philos[i].id % 2 == 1)
-			table->philos[i].first_fork->fork_id += 1;
-		else
-			table->philos[i].first_fork->fork_id *= 1;
-		if (table->philos[i].first_fork->fork_id >= 100)
-		{
-			printf("%lld now philos[%d].r_fork is greater than 100.\n", current_timestamp(), (int)i);
-			pthread_mutex_unlock(&table->forks[i].fork);
-			break ;
-		}
+		printf("check segv --- lock ---\n");
+		// if (table->philos[i].id % 2 == 1)
+		// 	table->philos[i].first_fork->fork_id += 1;
+		// else
+		// 	table->philos[i].first_fork->fork_id *= 1;
+		// if (table->philos[i].first_fork->fork_id >= 100)
+		// {
+		// 	printf("%ld now philos[%d].r_fork is greater than 100.\n", current_timestamp(), (int)i);
+		// 	pthread_mutex_unlock(&table->forks[i].fork);
+		// 	break ;
+		// }
 		pthread_mutex_unlock(&table->forks[i].fork);
 		i++;
 	}
 	return (NULL);
 }
+
+// static void	*simulate_dinner(void *data)
+// {
+// 	t_philo	*philo;
+
+// 	philo = (t_philo *)data;
+// 	wait_all_threads(philo->table); // TODO
+// 	return (NULL);	
+// }
 
 // static void	*eat_thread(void *arg)
 // {

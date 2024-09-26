@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 13:28:00 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:31:12 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ static int	init_fork(t_table *table)
 
 static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 {
-	int	philo_nbr;
+	size_t	philo_nbr;
 
+	if (philo == NULL || forks == NULL || philo->table == NULL)
+		return ;
 	philo_nbr = philo->table->philo_nbr;
 	philo->first_fork = &forks[(philo_pos + 1) % philo_nbr];
 	philo->second_fork = &forks[philo_pos];
@@ -46,7 +48,9 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int philo_pos)
 		philo->first_fork = &forks[philo_pos];
 		philo->second_fork = &forks[(philo_pos + 1) % philo_nbr];
 	}
-
+	// デバッグ出力
+	printf("Philosopher %zu: first_fork: %d, second_fork: %d\n", philo->id,
+		philo->first_fork->fork_id, philo->second_fork->fork_id);
 }
 
 static int	init_philo(t_table *table)
@@ -63,8 +67,8 @@ static int	init_philo(t_table *table)
 		table->philos[i].meals_counter = 0;
 		table->philos[i].full = false;
 		table->philos[i].last_meal_time = 0;
-		assign_forks(table->philos, table->forks, i);
 		table->philos[i].table = table;
+		assign_forks(table->philos, table->forks, i);
 		i++;
 	}
 	return (EXIT_SUCCESS);
@@ -87,8 +91,11 @@ int	init_data(t_table **table, char **argv)
 	else
 		(*table)->nbr_limit_meals = -1;
 	(*table)->start_simulation = current_timestamp();
+	(*table)->end_simulation = false;
+	(*table)->ready_all_threads = false;
+	pthread_mutex_init(&(*table)->table_mutex, NULL);
 	// FIXME: rm
-	printf("%lld begin simulation.\n", (*table)->start_simulation);
+	printf("%ld begin simulation.\n", (*table)->start_simulation);
 	if (init_fork(*table) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (init_philo(*table) == EXIT_FAILURE)
