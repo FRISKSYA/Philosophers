@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/23 19:30:13 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 09:58:00 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void					cleanup(t_table *table);
 bool					print_err(const char *msg);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
+bool					is_digit_array(char *str);
 
 typedef struct s_test
 {
