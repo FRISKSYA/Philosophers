@@ -6,6 +6,7 @@ RESET = \033[0m
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+ADDRESSCHECK = -fsanitize=address
 INCLUDES = -I$(HEADERS_DIRECTORY)
 PTHREAD = -pthread
 
@@ -22,7 +23,8 @@ SRCS = main.c\
 		ft_isdigit.c\
 		init_data.c\
 		cleanup.c\
-		eat_dinner.c
+		eat_dinner.c\
+		time.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 
@@ -33,6 +35,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(PTHREAD) $(OBJS) -o $(NAME)
+	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created successfully$(RESET)"
+
+sanitize: $(OBJS_DIR) $(OBJS)
+	@$(CC) $(CFLAGS) $(ADDRESSCHECK) $(PTHREAD) $(OBJS) -o $(NAME)
 	@echo "$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created successfully$(RESET)"
 

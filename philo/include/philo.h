@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 10:46:11 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:21:21 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ typedef struct s_philo
 	size_t				id;
 	size_t				meals_counter;
 	bool				full;
-	size_t				last_meal_time;
+	long long int		last_meal_time;
 	t_fork				*l_fork;
 	t_fork				*r_fork;
 	pthread_t			thread_id;
+	t_table				*table;
 }						t_philo;
 
 typedef struct s_table
@@ -55,8 +56,9 @@ typedef struct s_table
 	long long int		time_to_die;
 	long long int		time_to_eat;
 	long long int		time_to_sleep;
-	size_t				nbr_limit_meals;
+	int					nbr_limit_meals;
 	long long int		start_simulation;
+	bool				end_simulation;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
@@ -71,6 +73,7 @@ bool					print_err(const char *msg);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
 bool					is_digit_array(char *str);
+long long int			current_timestamp(void);
 
 typedef struct s_test
 {

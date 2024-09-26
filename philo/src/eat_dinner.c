@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 10:48:25 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:34:57 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ static void	*test_thread(void *arg)
 			table->philos[i].r_fork->fork_id += 1;
 		else
 			table->philos[i].r_fork->fork_id *= 1;
+		if (table->philos[i].r_fork->fork_id >= 100)
+		{
+			printf("%lld now philos[%d].r_fork is greater than 100.\n", current_timestamp(), (int)i);
+			pthread_mutex_unlock(&table->forks[i].fork);
+			break ;
+		}
 		pthread_mutex_unlock(&table->forks[i].fork);
 		i++;
 	}

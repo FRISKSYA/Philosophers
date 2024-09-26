@@ -6,13 +6,12 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 10:48:56 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:26:05 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO: fill values
 static int	init_fork(t_table *table)
 {
 	size_t	i;
@@ -71,7 +70,10 @@ int	init_data(t_table **table, char **argv)
 	if (argv[i])
 		(*table)->nbr_limit_meals = ft_atoi(argv[i]);
 	else
-		(*table)->nbr_limit_meals = 0;
+		(*table)->nbr_limit_meals = -1;
+	(*table)->start_simulation = current_timestamp();
+	// FIXME: rm
+	printf("%lld begin simulation.\n", (*table)->start_simulation);
 	if (init_fork(*table) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (init_philo(*table) == EXIT_FAILURE)
