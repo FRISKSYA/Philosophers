@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 18:42:07 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:06:34 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	eat_dinner(t_table *table)
 {
 	int	i;
 	int	index;
-
+	
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (1 == table->philo_nbr)
@@ -26,7 +26,7 @@ void	eat_dinner(t_table *table)
 	while (index < (int)table->philo_nbr)
 	{
 		i = pthread_create(&table->philos[index].thread_id, NULL,
-				simulate_dinner, table);
+				simulate_dinner, &table->philos[index]);
 		if (i != 0)
 		{
 			print_err("pthread_create");
