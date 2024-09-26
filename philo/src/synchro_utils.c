@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:32:45 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:07:06 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	*simulate_dinner(void *data)
 		if (philo->full)
 			break ;
 		// eat(philo); // TODO
+		write_status(SLEEPING, philo, DEBUG_MODE);
+		precise_usleep(philo->table->time_to_sleep, philo->table);
 		// thinking(philo); // TODO
 	}
 	return (NULL);

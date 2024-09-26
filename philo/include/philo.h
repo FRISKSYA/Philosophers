@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 17:32:19 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:04:59 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ typedef enum s_time_code
 	MILLISECOND,
 	MICROSECOND,
 }						t_time_code;
+
+// for write_status
+typedef enum s_philo_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+}						t_philo_status;
+
+# define DEBUG_MODE 0
 
 typedef struct s_fork	t_fork;
 typedef struct s_table	t_table;
@@ -67,6 +80,7 @@ typedef struct s_table
 	bool				end_simulation;
 	bool				ready_all_threads;
 	pthread_mutex_t		table_mutex;
+	pthread_mutex_t		write_mutex;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
@@ -94,5 +108,7 @@ void					set_long(pthread_mutex_t *mutex, long int *dest,
 							long int value);
 long int				get_long(pthread_mutex_t *mutex, long int *value);
 bool					finished_simulation(t_table *table);
+void					write_status(t_philo_status status, t_philo *philo,
+							bool debug);
 
 #endif
