@@ -24,7 +24,8 @@ SRCS = main.c\
 		init_data.c\
 		cleanup.c\
 		eat_dinner.c\
-		time.c
+		time.c\
+		getter_setter.c
 
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 

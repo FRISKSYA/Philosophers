@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/26 13:23:04 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:29:53 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
-// dev
-# include <string.h>
 
 // validate args
 # define MAX_PHILOSOPHERS 10000
@@ -43,7 +41,7 @@ typedef struct s_philo
 	size_t				id;
 	size_t				meals_counter;
 	bool				full;
-	long long int		last_meal_time;
+	long int			last_meal_time;
 	t_fork				*first_fork;
 	t_fork				*second_fork;
 	pthread_t			thread_id;
@@ -53,12 +51,14 @@ typedef struct s_philo
 typedef struct s_table
 {
 	size_t				philo_nbr;
-	long long int		time_to_die;
-	long long int		time_to_eat;
-	long long int		time_to_sleep;
+	long int			time_to_die;
+	long int			time_to_eat;
+	long int			time_to_sleep;
 	int					nbr_limit_meals;
-	long long int		start_simulation;
+	long int			start_simulation;
 	bool				end_simulation;
+	bool				ready_all_threads;
+	pthread_mutex_t		table_mutex;
 	t_fork				*forks;
 	t_philo				*philos;
 }						t_table;
@@ -73,13 +73,12 @@ bool					print_err(const char *msg);
 int						ft_isdigit(int i);
 int						ft_atoi(const char *str);
 bool					is_digit_array(char *str);
-long long int			current_timestamp(void);
-
-typedef struct s_test
-{
-	int					sum;
-	char				*str;
-	pthread_mutex_t		mutex;
-}						t_test;
+long int				current_timestamp(void);
+void					set_bool(pthread_mutex_t *mutex, bool *dest,
+							bool value);
+bool					get_bool(pthread_mutex_t *mutex, bool *value);
+void					set_long(pthread_mutex_t *mutex, long int *dest,
+							long int value);
+long int				get_long(pthread_mutex_t *mutex, long int *value);
 
 #endif
