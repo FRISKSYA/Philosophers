@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:38:21 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/27 00:01:13 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:46:00 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 		else if (status == SLEEPING && !finished_simulation(philo->table))
 			printf("%-6ld %zu is sleeping\n", elapsed, philo->id);
 		else if (status == THINKING && !finished_simulation(philo->table))
-			printf("%-6ld %zu is thiking\n", elapsed, philo->id);
+			printf("%-6ld %zu is thinking\n", elapsed, philo->id);
 		else if (status == DIED)
 			printf("%-6ld %zu died\n", elapsed, philo->id);
 		pthread_mutex_unlock(&philo->table->write_mutex);

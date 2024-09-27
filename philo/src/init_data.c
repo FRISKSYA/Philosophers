@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:33 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/27 00:19:01 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:44:27 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ int	init_data(t_table **table, char **argv)
 		return (EXIT_FAILURE);
 	i = 1;
 	(*table)->philo_nbr = ft_atoi(argv[i++]);
-	(*table)->time_to_die = ft_atoi(argv[i++]);
-	(*table)->time_to_eat = ft_atoi(argv[i++]);
-	(*table)->time_to_sleep = ft_atoi(argv[i++]);
+	// mille -> micro
+	(*table)->time_to_die = ft_atoi(argv[i++]) * 1e3;
+	(*table)->time_to_eat = ft_atoi(argv[i++]) * 1e3;
+	(*table)->time_to_sleep = ft_atoi(argv[i++]) * 1e3;
 	if (argv[i])
 		(*table)->nbr_limit_meals = ft_atoi(argv[i]);
 	else

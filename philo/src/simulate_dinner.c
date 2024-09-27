@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/27 00:46:46 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:17:04 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	eat(t_philo *philo)
 	if (philo->table->nbr_limit_meals > 0
 		&& philo->meals_counter == (size_t)philo->table->nbr_limit_meals)
 		set_bool(&philo->philo_mutex, &philo->full, true);
-	pthread_mutex_unlock(&philo->first_fork->fork);
 	pthread_mutex_unlock(&philo->second_fork->fork);
+	pthread_mutex_unlock(&philo->first_fork->fork);
 	return ;
 }
 
