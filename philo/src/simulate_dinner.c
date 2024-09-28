@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/28 14:48:59 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:38:14 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,36 @@ static void	eat(t_philo *philo)
 	return ;
 }
 
-// TODO
-static void	thinking(t_philo *philo)
+static void	thinking(t_philo *philo, bool pre_simulation)
 {
-	write_status(THINKING, philo, DEBUG_MODE);
+	long int	t_eat;
+	long int	t_sleep;
+	long int	t_think;
+
+	if (!pre_simulation)
+		write_status(THINKING, philo, DEBUG_MODE);
+	if (philo->table->philo_nbr % 2 == 0)
+		return ;
+	t_eat = philo->table->time_to_eat;
+	t_sleep = philo->table->time_to_sleep;
+	t_think = t_eat * 2 - t_sleep;
+	if (t_think < 0)
+		t_think = 0;
+	precise_usleep(t_think * 0.42, philo->table);
+}
+
+static void	synchronize_philos(t_philo *philo)
+{
+	if (philo->table->philo_nbr % 2 == 0)
+	{
+		if (philo->id % 2 == 0)
+			precise_usleep(3e4, philo->table);
+	}
+	else
+	{
+		if (philo->id % 2)
+			thinking(philo, true);
+	}
 }
 
 void	*simulate_dinner(void *data)
@@ -51,6 +77,7 @@ void	*simulate_dinner(void *data)
 	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILLISECOND));
 	increase_long(&philo->table->table_mutex,
 		&philo->table->threads_runnning_nbr);
+	synchronize_philos(philo);
 	while (!finished_simulation(philo->table))
 	{
 		if (philo->full)
@@ -58,7 +85,7 @@ void	*simulate_dinner(void *data)
 		eat(philo);
 		write_status(SLEEPING, philo, DEBUG_MODE);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
-		thinking(philo);
+		thinking(philo, false);
 	}
 	return (NULL);
 }

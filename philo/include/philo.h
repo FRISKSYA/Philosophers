@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/28 14:48:47 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:55:48 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <unistd.h>
 
 // validate args
-# define MAX_PHILOSOPHERS 10000
-# define MAX_TIME_IN_MS 1800000
-# define MAX_MEALS 5000
+# define MAX_PHILOSOPHERS 1000
+# define MAX_TIME_IN_MS 18000
+# define MAX_MEALS 100
 
 // for gettime
 typedef enum s_time_code
