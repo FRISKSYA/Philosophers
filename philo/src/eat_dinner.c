@@ -6,13 +6,12 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 19:29:38 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/28 15:09:05 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/28 19:22:32 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO: if elapsed time_to_die, auto die the philo.
 static void	*lone_philo(void *data)
 {
 	t_philo	*philo;
@@ -22,7 +21,6 @@ static void	*lone_philo(void *data)
 	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILLISECOND));
 	increase_long(&philo->table->table_mutex,
 		&philo->table->threads_runnning_nbr);
-	// TODO: Need to end_simulation
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	while (!finished_simulation(philo->table))
 		usleep(200);

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor_dinner.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/28 19:20:46 by kfukuhar          #+#    #+#             */
+/*   Updated: 2024/09/28 19:21:16 by kfukuhar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -36,8 +47,8 @@ static bool	philo_died(t_philo *philo)
 
 void	*monitor_dinner(void *data)
 {
-	int i;
-	t_table *table;
+	int		i;
+	t_table	*table;
 
 	table = (t_table *)data;
 	while (!all_thread_running(&table->table_mutex,
@@ -48,7 +59,7 @@ void	*monitor_dinner(void *data)
 		i = 0;
 		while (i < (int)table->philo_nbr && !finished_simulation(table))
 		{
-			if (philo_died(&table->philos[i])) // TODO
+			if (philo_died(&table->philos[i]))
 			{
 				set_bool(&table->table_mutex, &table->end_simulation, true);
 				write_status(DIED, &table->philos[i], DEBUG_MODE);
