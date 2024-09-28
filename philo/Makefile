@@ -4,7 +4,7 @@ RED = \033[0;31m
 RESET = \033[0m
 
 NAME = philo
-CC = cc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror -g
 ADDRESSCHECK = -fsanitize=address
 INCLUDES = -I$(HEADERS_DIRECTORY)

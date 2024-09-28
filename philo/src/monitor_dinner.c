@@ -1,7 +1,7 @@
 
 #include "philo.h"
 
-void	incread_long(pthread_mutex_t *mutex, long int *value)
+void	increase_long(pthread_mutex_t *mutex, long int *value)
 {
 	pthread_mutex_lock(mutex);
 	(*value)++;

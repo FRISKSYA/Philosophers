@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:49:18 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/27 18:17:04 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/28 14:48:59 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	*simulate_dinner(void *data)
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
 	set_long(&philo->philo_mutex, &philo->last_meal_time, gettime(MILLISECOND));
-	incread_long(&philo->table->table_mutex,
+	increase_long(&philo->table->table_mutex,
 		&philo->table->threads_runnning_nbr);
 	while (!finished_simulation(philo->table))
 	{

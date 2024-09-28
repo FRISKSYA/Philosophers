@@ -6,7 +6,7 @@
 /*   By: kfukuhar <kfukuhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:52:20 by kfukuhar          #+#    #+#             */
-/*   Updated: 2024/09/27 18:37:01 by kfukuhar         ###   ########.fr       */
+/*   Updated: 2024/09/28 14:48:47 by kfukuhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool					finished_simulation(t_table *table);
 void					write_status(t_philo_status status, t_philo *philo,
 							bool debug);
 void					*monitor_dinner(void *data);
-void					incread_long(pthread_mutex_t *mutex, long int *value);
+void					increase_long(pthread_mutex_t *mutex, long int *value);
 void					wait_all_threads(t_table *table);
 
 #endif
